@@ -8,7 +8,8 @@ This application provides access to secret resources. It uses the [microservice 
 We use three microservices in this application:
   - authentication service
   - authorization service
-  - resource service
+  - resource service  
+![alt text](https://github.com/saurabhagrawal0412/Assignment1/blob/master/design.jpg)
 
 ### [Authentication service](https://github.com/saurabhagrawal0412/Assignment1/tree/master/authentication-service)
 This service takes user id, password and resource id as input. This service stores the user ids and passwords in a MySQL database. It queries the database to authenticate the user. If the user is **legit**, it calls Authorization service for checking authorization of the user to access the resource. Otherwise, it returns a [401](https://httpstatuses.com/401).
