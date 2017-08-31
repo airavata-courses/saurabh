@@ -1,11 +1,13 @@
 # Database for resources
 CREATE USER IF NOT EXISTS `resource_user`@`localhost` IDENTIFIED BY 'password';
 
+DROP DATABASE IF EXISTS `resource-db`;
+
 CREATE DATABASE IF NOT EXISTS `resource-db`;
 
-GRANT ALL PRIVILEGES ON `resource-db` TO `resource_user`@`localhost`;
-
 USE `resource-db`;
+
+GRANT ALL PRIVILEGES ON `resource-db` TO `resource_user`@`localhost`;
 
 CREATE TABLE IF NOT EXISTS `resources` (
   resource_id int(10) auto_increment,
