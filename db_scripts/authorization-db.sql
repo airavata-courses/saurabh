@@ -1,5 +1,7 @@
 # Database for authorization
-CREATE USER `authorization_user`@`localhost` IDENTIFIED BY 'password';
+CREATE USER IF NOT EXISTS `authorization_user`@`localhost` IDENTIFIED BY 'password';
+
+DROP DATABASE IF EXISTS `authorization-db`;
 
 CREATE DATABASE IF NOT EXISTS `authorization-db`;
 
