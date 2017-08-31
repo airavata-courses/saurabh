@@ -1,5 +1,7 @@
 # Database for authentication
-CREATE USER `authentication_user`@`localhost` IDENTIFIED BY 'password';
+CREATE USER IF NOT EXISTS `authentication_user`@`localhost` IDENTIFIED BY 'password';
+
+DROP DATABASE IF EXISTS `authentication-db`;
 
 CREATE DATABASE IF NOT EXISTS `authentication-db`;
 
