@@ -44,7 +44,7 @@ This service is written in Java and uses [Spring Boot](https://projects.spring.i
 
 ## How to test this application
 1) **Test case 1**: Correct credentials and authorized resources
-  > ID -> 1 <br/> <br/>
+  > ID -> 1 <br/>
   > Password -> password1 <br/>
   > Resource ID -> 1 <br/>
   > Expected output -> resource 1: secret 1
