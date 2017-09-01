@@ -33,30 +33,30 @@ This service is written in Java and uses [Spring Boot](https://projects.spring.i
 
 ## Database
 1) **User 1**:
-  > ID: 1,
-  > Password: password1,
+  > ID: 1, <br/>
+  > Password: password1, <br/>
   > Authorized resources: 1 and 2
 
 2) **User 2**:
-  > ID: 2,
-  > Password: password2,
+  > ID: 2, <br/>
+  > Password: password2, <br/>
   > Authorized resources: 2
 
 ## How to test this application
 1) **Test case 1**: Correct credentials and authorized resources
-  > ID -> 1
-  > Password -> password1
-  > Resource ID -> 1
+  > ID -> 1 <br/> <br/>
+  > Password -> password1 <br/>
+  > Resource ID -> 1 <br/>
   > Expected output -> resource 1: secret 1
 
 2) **Test case 2**: Incorrect credentials
-  > ID -> 1
-  > Password -> wrongpassword
-  > Resouce ID -> 1
+  > ID -> 1 <br/>
+  > Password -> wrongpassword <br/>
+  > Resouce ID -> 1 <br/>
   > Expected output -> You are not authentic user
 
 3) **Test case 3**: Trying to access unauthorized resource
-  > ID -> 2
-  > Password -> password2
-  > Resouce ID -> 2
+  > ID -> 2 <br/>
+  > Password -> password2 <br/>
+  > Resouce ID -> 2 <br/>
   > Expected output -> Unauthorized for accessing resource
