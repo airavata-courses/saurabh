@@ -30,3 +30,33 @@ This service is written in Java and uses [Spring Boot](https://projects.spring.i
 1) Clone the [repository](https://github.com/saurabhagrawal0412/Assignment1.git)
 1) Follow the steps in individual README
 1) `cd` to **UI** directory and run the webpage **index.html**
+
+## Database
+1) **User 1**:
+  ID: 1,
+  Password: password1,
+  Authorized resources: 1 and 2
+
+2) **User 2**:
+  ID: 2,
+  Password: password2,
+  Authorized resources: 2
+
+## How to test this application
+1) **Test case 1**: Correct credentials and authorized resources
+  ID -> 1
+  Password -> password1
+  Resource ID -> 1
+  Expected output -> resource 1: secret 1
+
+2) **Test case 2**: Incorrect credentials
+  ID -> 1
+  Password -> wrongpassword
+  Resouce ID -> 1
+  Expected output -> You are not authentic user
+
+3) **Test case 3**: Trying to access unauthorized resource
+  ID -> 2
+  Password -> password2
+  Resouce ID -> 2
+  Expected output -> Unauthorized for accessing resource
