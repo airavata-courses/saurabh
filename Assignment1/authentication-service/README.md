@@ -9,4 +9,4 @@ This service is written in Python and exposes REST endpoints using [Flask](http:
 1) [Install Flask](http://flask.pocoo.org/docs/0.12/installation/) package. This is used to expose REST endpoints
 1) [Install Python MySQL connector](https://dev.mysql.com/downloads/connector/python/) package
 1) [Install Requests](http://docs.python-requests.org/en/master/user/install/#install) package
-1) Execute `python authentication_service.py` from command line to start the server
+1) Execute `python authentication_Service.py` from command line to start the server
