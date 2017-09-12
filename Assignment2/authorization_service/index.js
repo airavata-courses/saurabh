@@ -23,24 +23,28 @@ amqp.connect('amqp://localhost', function(err, conn) {
       var reqStr = msg.content.toString()
       var requestObj = JSON.parse(reqStr)
       var userId = requestObj.id
-      console.log('userId -> ' + userId)
       var resourceId = requestObj.resource
-      console.log('resourceId -> ' + resourceId)
       isUserAuthorized(userId, resourceId, function (isAuthorized) {
-        console.log("isAuthorized -> " + isAuthorized)
         responseObj = {}
         responseObj.isAuthorized = isAuthorized
         if (isAuthorized) {
-
+          sendMessage(function(resourceString) {
+            responseObj.responseCode = 200
+            responseObj.resource = resourceString
+            var response = JSON.stringify(responseObj)
+            ch.sendToQueue(msg.properties.replyTo,
+              new Buffer(response.toString()),
+              {correlationId: msg.properties.correlationId});
+            ch.ack(msg);
+          })
         } else {
-
+          responseObj.responseCode = 401
+          var response = JSON.stringify(responseObj)
+          ch.sendToQueue(msg.properties.replyTo,
+            new Buffer(response.toString()),
+            {correlationId: msg.properties.correlationId});
+          ch.ack(msg);
         }
-        
-        var response = JSON.stringify(responseObj)
-        ch.sendToQueue(msg.properties.replyTo,
-          new Buffer(response.toString()),
-          {correlationId: msg.properties.correlationId});
-        ch.ack(msg);
       });
     });
   });
@@ -59,25 +63,25 @@ function isUserAuthorized(id, resource, next) {
 };
 
 function sendMessage(next) {
-  amqp.connect('amqp://localhost', function(err, conn) {
-    conn.createChannel(function(err, ch) {
-      ch.assertQueue('', {exclusive: true}, function(err, q) {
+  amqp.connect('amqp://localhost', function(err1, conn1) {
+    conn1.createChannel(function(err1, ch1) {
+      ch1.assertQueue('', {exclusive: true}, function(err1, q) {
         var corr = Math.random().toString() +
                    Math.random().toString() +
                    Math.random().toString()
-        var num = 1;
+        var num = 1
   
-        console.log(' [x] Requesting secret(%d)', num);
+        console.log(' [x] Requesting secret(%d)', num)
   
-        ch.consume(q.queue, function(msg) {
+        ch1.consume(q.queue, function(msg) {
           if (msg.properties.correlationId === corr) {
             console.log(' [.] Got %s', msg.content.toString());
+            setTimeout(function() { conn1.close(); process.exit(0) }, 500);
             next(msg.content.toString())
-            setTimeout(function() { conn.close(); process.exit(0) }, 500);
           }
         }, {noAck: true});
   
-        ch.sendToQueue('resource_queue',
+        ch1.sendToQueue('resource_queue',
           new Buffer(num.toString()),
           { correlationId: corr, replyTo: q.queue });
       });
