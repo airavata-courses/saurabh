@@ -49,15 +49,20 @@ Temporary Items
 # Ignoring .idea in authentication-service
 authentication-service/.idea
 
+# Ignoring node modules in authorization service
+authorization-service/node_modules/*
+
+# Ignoring package-lock.json in authorization service
+authorization-service/package-lock.json
+
 # Ignoring package-lock.json in API server
-authorization_service/package-lock.json
+api_server/package-lock.json
 
 # Ignoring node modules in API server
-authorization_service/node_modules/*
+api_server/node_modules/*
 
-# Ignoring settings directory in resource service
-resource_service_messaging/.settings
+# Ignoring target files
+resource_service/target/*
 
-resource_service_messaging/target
-resource_service_messaging/src/test
-resource_service_messaging/.classpath
+# Ignoring the source gliffy file
+Assn1_Architecture.gliffy
