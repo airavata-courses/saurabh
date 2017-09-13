@@ -6,5 +6,5 @@ This service is written in Java and uses [Spring Boot](https://projects.spring.i
 ## Set up
 1) [Install Java Development Kit (JDK 8)](http://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html) if it not already installed
 1) Check whether Java is succesfully installed or not by running `java -version`
-1) `cd` to the **target** directory
+1) `cd` to the home directory of project
 1) Execute the command `java -jar resource-service-0.0.1-SNAPSHOT.jar` from command line
