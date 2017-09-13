@@ -60,3 +60,5 @@ api_server/package-lock.json
 
 # Ignoring node modules in API server
 api_server/node_modules/*
+
+resource-service/target/classes/*
