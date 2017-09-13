@@ -63,3 +63,6 @@ api_server/node_modules/*
 
 # Ignoring target files
 resource-service/target/*
+
+# Ignoring the source gliffy file
+Assn1_Architecture.gliffy
