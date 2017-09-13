@@ -47,13 +47,13 @@ Temporary Items
 .apdisk
 
 # Ignoring .idea in authentication-service
-authentication-service/.idea
+authentication_service/.idea
 
 # Ignoring node modules in authorization service
-authorization-service/node_modules/*
+authorization_service/node_modules/*
 
 # Ignoring package-lock.json in authorization service
-authorization-service/package-lock.json
+authorization_service/package-lock.json
 
 # Ignoring package-lock.json in API server
 api_server/package-lock.json
