@@ -29,36 +29,6 @@ This service is written in Javascript and uses [amqplib](https://www.npmjs.com/p
 This service takes resource id as input. This service stores the resource ids and the secret resource strings in a MySQL database. It queries the database to retrieve the resource string with respect to a resource id. If the resource id is **valid**, it returns the secret resource string in the RPC response. Otherwise, it returns an error in the RPC response.
 This service is written in Java and uses [com.rabbitmq](https://www.rabbitmq.com/java-client.html) to implement the RabbitMQ RPC client.
 
-## Database
-1) **User 1**:
-  > ID: 1, <br/>
-  > Password: password1, <br/>
-  > Authorized resources: 1 and 2
-
-2) **User 2**:
-  > ID: 2, <br/>
-  > Password: password2, <br/>
-  > Authorized resources: 2
-
-## How to test this application
-1) **Test case 1**: Correct credentials and authorized resources
-  > ID -> 1 <br/>
-  > Password -> password1 <br/>
-  > Resource ID -> 1 <br/>
-  > Expected output -> resource 1: secret 1
-
-2) **Test case 2**: Incorrect credentials
-  > ID -> 1 <br/>
-  > Password -> wrongpassword <br/>
-  > Resouce ID -> 1 <br/>
-  > Expected output -> You are not authentic user
-
-3) **Test case 3**: Trying to access unauthorized resource
-  > ID -> 2 <br/>
-  > Password -> password2 <br/>
-  > Resouce ID -> 2 <br/>
-  > Expected output -> Unauthorized for accessing resource
-
 ## Current status
 * Creating the instances **Done**
 * Changing the services to handle RabbitMQ RPC requests instead of the HTTP ones **Done**
