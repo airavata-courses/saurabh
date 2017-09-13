@@ -6,6 +6,7 @@ This application provides access to secret resources. It uses the [microservice 
 1) After a user is found to be authentic and authorized to access the resource, the application returns the resource string
 
 We use four microservices in this application:
+  - API server
   - authentication service
   - authorization service
   - resource service  
