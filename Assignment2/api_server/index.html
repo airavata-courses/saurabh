@@ -1,0 +1,31 @@
+<html>
+  <head>
+    <title>View secret resource</title>
+  </head>
+  <body>
+    <h1>View secret resource</h1>
+	<script>
+	  function doAlert() {
+		var userID = document.forms["myform"].elements["user_id"].value;
+		var userPassword = document.forms["myform"].elements["user_pwd"].value;
+		var resourceId = document.forms["myform"].elements["resource_id"].value;
+		var url = "http://localhost:3002/id/" + userID + "/password/" + userPassword + "/resource_id/" + resourceId;
+		// alert(url);
+		document.forms["myform"].action=url;
+		document.forms["myform"].submit();
+	  }
+	</script>	
+	<form name="myform" onsubmit="return doAlert()">
+	  User ID:<br>
+	  <input type="text" name="user_id" id="user_id">
+	  <br>
+	  Password:<br>
+	  <input type="text" name="user_pwd" id="user_pwd">
+	  <br>
+	  Resource ID:<br>
+	  <input type="text" name="resource_id" id="resource_id">
+	  <br><br>
+	  <input type="submit" value="Submit">
+	</form> 
+  </body>
+</html>
