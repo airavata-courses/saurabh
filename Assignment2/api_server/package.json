@@ -9,6 +9,7 @@
   "author": "Saurabh",
   "license": "ISC",
   "dependencies": {
+    "amqplib": "^0.5.1",
     "express": "^4.15.4",
     "request": "^2.81.0"
   }
