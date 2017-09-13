@@ -4,8 +4,9 @@ import uuid
 import json
 
 
-class FibonacciRpcClient(object):
+class AuthorizationClient(object):
     def __init__(self):
+        print 'Creating authorization client'
         self.connection = pika.BlockingConnection(pika.ConnectionParameters(
             host='localhost'))
 
@@ -27,8 +28,8 @@ class FibonacciRpcClient(object):
         self.channel.basic_publish(exchange='',
                                    routing_key='authorization_queue',
                                    properties=pika.BasicProperties(
-                                       reply_to = self.callback_queue,
-                                       correlation_id = self.corr_id,
+                                     reply_to=self.callback_queue,
+                                     correlation_id=self.corr_id,
                                    ),
                                    body=str(n))
         while self.response is None:
@@ -36,9 +37,9 @@ class FibonacciRpcClient(object):
         return self.response
 
 
-fibonacci_rpc = FibonacciRpcClient()
+authorization_client = AuthorizationClient()
 
 print(" [x] Requesting fib(2)")
-message = {"id": 2, "resource": 2}
-response = fibonacci_rpc.call(json.dumps(message))
+message = {"id": 1, "resource": 1}
+response = authorization_client.call(json.dumps(message))
 print(" [.] Got %r" % response)
