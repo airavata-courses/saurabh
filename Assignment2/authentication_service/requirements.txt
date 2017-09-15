@@ -1,2 +1,2 @@
 pika==0.11.0
-mysql_connector_python==2.1.7
+mysql-connector==2.1.6
