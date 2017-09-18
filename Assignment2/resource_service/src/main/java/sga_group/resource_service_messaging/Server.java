@@ -19,6 +19,7 @@ public class Server {
   private static final String RPC_QUEUE_NAME = "resource_queue";
 
   private static String getResourceString(String resourceId) throws SQLException {
+    System.out.println("Resource ID -> " + resourceId);
     java.sql.Connection sqlConnection = ConnectionManager.getConnection();
     String query = "SELECT resource_string FROM resources WHERE resource_id=?;";
     PreparedStatement pstmt = sqlConnection.prepareStatement(query);
@@ -26,16 +27,20 @@ public class Server {
     ResultSet rs = pstmt.executeQuery();
     if (rs.next()) {
       return rs.getString(1);
-    } else {
-      return "Bad resource ID";
+      } else {
+        return "Bad resource ID";
     }
   }
 
   public static void main(String[] args) {
     ConnectionFactory factory = new ConnectionFactory();
-    factory.setHost("localhost");
+    factory.setUsername("new_user");
+    factory.setPassword("password");
+    factory.setVirtualHost("/");
+    factory.setHost("149.165.169.11");
+    factory.setPort(5672);
 
-    try(com.rabbitmq.client.Connection rabbitMqConnection = factory.newConnection()) {
+    try (com.rabbitmq.client.Connection rabbitMqConnection = factory.newConnection()) {
       final Channel channel = rabbitMqConnection.createChannel();
       channel.queueDeclare(RPC_QUEUE_NAME, false, false, false, null);
       channel.basicQos(1);
