@@ -1,14 +1,19 @@
 #!/usr/bin/env python
 import pika
 import uuid
-import json
+# import json
 
 
 class AuthorizationClient(object):
     def __init__(self):
         print 'Creating authorization client'
-        self.connection = pika.BlockingConnection(pika.ConnectionParameters(
-            host='localhost'))
+        credentials = pika.PlainCredentials('new_user', 'password')
+        parameters = pika.ConnectionParameters('149.165.169.11',
+                                               5672,
+                                               '/',
+                                               credentials)
+        self.connection = pika.BlockingConnection(parameters)
+        # self.connection = pika.BlockingConnection(pika.ConnectionParameters(host='localhost'))
 
         self.channel = self.connection.channel()
 
@@ -39,7 +44,7 @@ class AuthorizationClient(object):
 
 authorization_client = AuthorizationClient()
 
-print(" [x] Requesting fib(2)")
-message = {"id": 1, "resource": 1}
-response = authorization_client.call(json.dumps(message))
-print(" [.] Got %r" % response)
+# print(" [x] Requesting fib(2)")
+# message = {"id": 1, "resource": 1}
+# response = authorization_client.call(json.dumps(message))
+# print(" [.] Got %r" % response)
