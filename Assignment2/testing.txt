@@ -1,0 +1,45 @@
+Code is kept here:
+https://github.com/airavata-courses/saurabh/tree/master/Assignment2
+
+Steps to start:
+1) Hit the URL: http://149.165.168.193:8080/job/secret_resource/build?TOKEN=secret_service
+It will ask for credentials:
+User name: admin
+Password: password
+This asks Jenkins to start the services on 149.165.168.224
+
+
+2) Go to http://149.165.168.224:3002
+This is the server where the services are deployed
+
+
+3) Run the test cases:
+i) Authentic and authorized user -> Secret resource should be fetched in this case
+
+Input:
+User ID: 2
+Password: password2
+Resource ID: 1
+
+Expected output:
+{"isAuthorized":true,"responseCode":200,"resource":"resource1:secret1"}
+
+
+ii) Unauthentic user -> Should show a message saying that the user is not authentic
+Input:
+User ID: 2
+Passord: WrongPassword
+Resource ID: 1
+
+Expected output:
+Unauthentic user
+
+
+iii) Unauthorized user -> Should show a message saying that the user is not authorized to access the resource
+Input:
+User ID: 2
+Passord: password2
+Resource ID: 2
+
+Expected output:
+{"isAuthorized":false,"responseCode":401}
