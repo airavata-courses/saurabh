@@ -1,0 +1,16 @@
+version: '3'
+
+services:
+  main_api_service:
+    image: saurabh0412/api_server
+    ports:
+      - 3002:3002
+
+  main_authentication_service:
+    image: saurabh0412/authentication_service
+
+  main_authorization_service:
+    image: saurabh0412/authorization_service
+
+  main_resource_service:
+    image: saurabh0412/resource_service
