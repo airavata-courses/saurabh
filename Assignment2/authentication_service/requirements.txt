@@ -1,2 +1,2 @@
-pika==0.11.0
-mysql-connector==2.1.6
+pika
+

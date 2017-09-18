@@ -1,0 +1,16 @@
+version: '3'
+
+services:
+  main_api_service:
+    build: ./api_server
+    ports:
+      - 3002:3002
+
+  main_authentication_service:
+    build: ./authentication_service
+
+  main_authorization_service:
+    build: ./authorization_service
+
+  main_resource_service:
+    build: ./resource_service
