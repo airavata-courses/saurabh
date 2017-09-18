@@ -10,33 +10,33 @@
 	<name>resource_service_messaging</name>
 	<url>http://maven.apache.org</url>
 
-  <properties>
-    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-    <maven.compiler.source>1.8</maven.compiler.source>
-    <maven.compiler.target>1.8</maven.compiler.target>
-  </properties>
+	<properties>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+		<maven.compiler.source>1.8</maven.compiler.source>
+		<maven.compiler.target>1.8</maven.compiler.target>
+	</properties>
 
-  <build>
-  <!-- For packaging application as an executable jar -->
-    <plugins>
-      <plugin>
-        <groupId>org.springframework.boot</groupId>
-        <artifactId>spring-boot-maven-plugin</artifactId>
-        <executions>
-          <execution>
-            <goals>
-              <goal>repackage</goal>
-            </goals>
-            <configuration>
-              <classifier>spring-boot</classifier>
-              <mainClass>sga_group.resource_service_messaging.Server</mainClass>
-            </configuration>
-          </execution>
-        </executions>
-      </plugin>
+	<build>
+		<!-- For packaging application as an executable jar -->
+		<plugins>
+			<plugin>
+				<groupId>org.springframework.boot</groupId>
+				<artifactId>spring-boot-maven-plugin</artifactId>
+				<executions>
+					<execution>
+						<goals>
+							<goal>repackage</goal>
+						</goals>
+						<configuration>
+							<classifier>spring-boot</classifier>
+							<mainClass>sga_group.resource_service_messaging.Server</mainClass>
+						</configuration>
+					</execution>
+				</executions>
+			</plugin>
 
-    </plugins>
-  </build>
+		</plugins>
+	</build>
 
 	<dependencies>
 		<dependency>
@@ -51,9 +51,9 @@
 			<version>4.1.1</version>
 		</dependency>
 		<dependency>
-			<groupId>mysql</groupId>
-			<artifactId>mysql-connector-java</artifactId>
-			<version>6.0.6</version>
+			<groupId>org.xerial</groupId>
+			<artifactId>sqlite-jdbc</artifactId>
+			<version>3.20.0</version>
 		</dependency>
 	</dependencies>
 </project>
