@@ -2,6 +2,40 @@ var amqp = require('amqplib/callback_api');
 
 const express = require('express');
 const app = express();
+const request = require('request')
+const Promise = require('promise')
+const fs = require('fs')
+
+function getIPv4() {
+  return new Promise(function(fulfill, reject) {
+    request('https://ipv4.icanhazip.com/', function (error, response, body) {
+      if (error) {
+        reject(error)
+      } else {
+        fulfill(body)
+      }
+    });
+  })
+}
+
+function editHTML() {
+  getIPv4().done(function(ipv4) {
+    ipv4 = ipv4.replace(/\n$/, '')
+    console.log('Got IPv4 -> ' + ipv4)
+    fs.readFile('index.html', function(err, data) {
+      if (err) {
+        return console.error(err);
+      }
+      var oldString = 'var ip = ""'
+      var newString = 'var ip = "' + ipv4 + '"'
+      data = data.toString()
+      data = data.replace(oldString, newString)
+      fs.writeFileSync('index.html', data, 'utf-8')
+    })
+  })
+}
+
+editHTML()
 
 app.get('/secret_resource', function (req, res) {
   var path = require('path')
