@@ -9,8 +9,11 @@
 		var userID = document.forms["myform"].elements["user_id"].value;
 		var userPassword = document.forms["myform"].elements["user_pwd"].value;
 		var resourceId = document.forms["myform"].elements["resource_id"].value;
-		var url = "http://149.165.168.224:3002/id/" + userID + "/password/" + userPassword + "/resource_id/" + resourceId;
-		// alert(url);
+		var ip = "";
+		var port = 3002;
+		var url = "http://" + ip + ':' + port + "/id/" + userID + 
+							"/password/" + userPassword + "/resource_id/" + resourceId;
+		alert(url);
 		document.forms["myform"].action=url;
 		document.forms["myform"].submit();
 	  }
